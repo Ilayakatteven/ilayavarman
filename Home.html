@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign-Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .toggle {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <form action="your-login-endpoint" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="toggle">
+        <p>Don't have an account? <a href="#" onclick="toggleForms()">Sign Up</a></p>
+    </div>
+
+    <h2 style="display: none;">Sign Up</h2>
+    <form style="display: none;" id="signup-form" action="your-signup-endpoint" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <div class="toggle" style="display: none;" id="toggle-signup">
+        <p>Already have an account? <a href="#" onclick="toggleForms()">Login</a></p>
+    </div>
+</div>
+
+<script>
+    function toggleForms() {
+        const loginForm = document.querySelector('form');
+        const signupForm = document.getElementById('signup-form');
+        const loginHeader = document.querySelector('h2');
+        const signupHeader = document.querySelectorAll('h2')[1];
+        const toggleSignup = document.getElementById('toggle-signup');
+
+        if (loginForm.style.display === 'none') {
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+            loginHeader.style.display = 'block';
+            signupHeader.style.display = 'none';
+            toggleSignup.style.display = 'none';
+        } else {
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            loginHeader.style.display = 'none';
+            signupHeader.style.display = 'block';
+            toggleSignup.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
